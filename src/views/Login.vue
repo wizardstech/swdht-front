@@ -1,5 +1,5 @@
 <template>
-  <layout name="LayoutModal">
+  <LayoutModal>
     <el-row justify="center" type="flex" :gutter="20">
     <el-col :span="6">
     <el-card class="box-card">
@@ -9,30 +9,42 @@
       </div>
       <div>
         <el-form>
-          <el-input class="m-5" placeholder="Your email" v-model="form.email"></el-input>
+          <el-input class="m-5" placeholder="Your username" v-model="form.username"></el-input>
           <el-input class="m-5" placeholder="Your password" v-model="form.password" show-password></el-input>
-          <el-button>Connexion</el-button>
+          <el-button @click=submitLogin>Connexion</el-button>
         </el-form>
       </div>
     </el-card>
     </el-col>
     </el-row>
-  </layout>
+  </LayoutModal>
 </template>
 
 <script>
-import Layout from '../layouts/Layout'
+import LayoutModal from '../layouts/LayoutModal'
+import { mapActions } from 'vuex'
+
 export default {
-  name: `Login`,
+  name: 'Login',
   components: {
-    Layout
+    LayoutModal
   },
   data () {
     return {
       form: {
-        loginInput: '',
-        loginPassword: ''
+        username: '',
+        password: ''
       }
+    }
+  },
+  methods: {
+    ...mapActions('auth', [
+      'fetchJWT'
+    ]),
+    submitLogin () {
+      const { username, password } = this.form
+      this.fetchJWT({ username, password })
+      this.$router.push({ path: '/' })
     }
   }
 }

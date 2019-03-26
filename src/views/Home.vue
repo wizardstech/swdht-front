@@ -1,16 +1,26 @@
 <template>
-  <layout name="LayoutDefault">
-  <div class="home">
+  <LayoutDefault>
+  <div>
   </div>
-  </layout>
+  </LayoutDefault>
 </template>
 
 <script>
-import Layout from '../layouts/Layout'
+import LayoutDefault from '@/layouts/LayoutDefault'
+import usersApi from '@/api/users'
+
 export default {
-  name: `Home`,
+  name: 'Home',
   components: {
-    Layout
+    LayoutDefault
+  },
+  data () {
+    return {
+      users: null
+    }
+  },
+  created () {
+    this.users = usersApi.getAll()
   }
 }
 </script>
