@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 
 const instance = axios.create({
   baseURL: process.env.VUE_APP_BACKEND_PROXY_URL,
@@ -7,6 +7,6 @@ const instance = axios.create({
     'Content-Type': 'application/json',
     'Authorization': 'Bearer ' + localStorage.token
   }
-})
+});
 
-export default instance
+export default instance;

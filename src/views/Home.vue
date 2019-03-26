@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import LayoutDefault from '@/layouts/LayoutDefault'
-import usersApi from '@/api/users'
+import LayoutDefault from '@/layouts/LayoutDefault';
+import usersApi from '@/api/users';
 
 export default {
   name: 'Home',
@@ -17,10 +17,10 @@ export default {
   data () {
     return {
       users: null
-    }
+    };
   },
   created () {
-    this.users = usersApi.getAll()
+    this.users = usersApi.getAll();
   }
-}
+};
 </script>

@@ -7,11 +7,11 @@
 </template>
 
 <script>
-import LayoutDefault from '../layouts/LayoutDefault'
+import LayoutDefault from '../layouts/LayoutDefault';
 export default {
   name: `Invoices`,
   components: {
     LayoutDefault
   }
-}
+};
 </script>

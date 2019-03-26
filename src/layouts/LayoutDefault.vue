@@ -30,5 +30,5 @@
 <script>
 export default {
   name: 'LayoutDefault'
-}
+};
 </script>

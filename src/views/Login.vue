@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import LayoutModal from '../layouts/LayoutModal'
-import { mapActions } from 'vuex'
+import LayoutModal from '../layouts/LayoutModal';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'Login',
@@ -35,17 +35,17 @@ export default {
         username: '',
         password: ''
       }
-    }
+    };
   },
   methods: {
     ...mapActions('auth', [
       'fetchJWT'
     ]),
     submitLogin () {
-      const { username, password } = this.form
-      this.fetchJWT({ username, password })
-      this.$router.push({ path: '/' })
+      const { username, password } = this.form;
+      this.fetchJWT({ username, password });
+      this.$router.push({ path: '/' });
     }
   }
-}
+};
 </script>
