@@ -41,10 +41,18 @@ export default {
     ...mapActions('auth', [
       'fetchJWT'
     ]),
-    submitLogin () {
-      const { username, password } = this.form;
-      this.fetchJWT({ username, password });
-      this.$router.push({ path: '/' });
+    async submitLogin () {
+      try {
+        const { username, password } = this.form;
+        await this.fetchJWT({ username, password });
+        await this.$router.push({ path: '/' });
+      } catch (error) {
+        this.$message({
+          showClose: true,
+          message: 'Oops, Bad credentials.',
+          type: 'error'
+        });
+      }
     }
   }
 };

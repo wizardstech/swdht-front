@@ -36,6 +36,17 @@ export const router = new Router({
       meta: {
         auth: false
       }
+    },
+    {
+      path: '/logout',
+      name: 'logout',
+      meta: {
+        auth: false
+      },
+      beforeEnter: (to, from, next) => {
+        localStorage.clear();
+        next('/login');
+      }
     }
   ]
 });
@@ -43,16 +54,20 @@ export const router = new Router({
 router.beforeEach(async (to, from, next) => {
   if (to.matched.some(record => record.meta.auth)) {
     try {
-      await authApi.checkToken();
-      next();
+      const response = await authApi.checkToken();
+      const { auth } = response.data;
+      if (!auth) {
+        return next('/login');
+      }
+      return next();
     } catch (error) {
       if (error.response.data.code === 401) {
-        next('/login');
+        next({ path: '/login', query: { redirect: to.fullPath } });
       }
     }
-    next();
+  } else {
+    return next();
   }
-  next();
 });
 
 export default router;

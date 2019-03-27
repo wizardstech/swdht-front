@@ -5,10 +5,10 @@
     <div class="val-sidebar-header">
       <h5> Wizards Technologies </h5>
     </div>
-    <el-menu-item route="home"  index="1">
+    <el-menu-item route="/"  index="1">
       Home
     </el-menu-item>
-    <el-menu-item route="invoices" index="3">
+    <el-menu-item route="/invoices" index="3">
       Invoices
     </el-menu-item>
     <el-menu-item route="/"  index="4">
