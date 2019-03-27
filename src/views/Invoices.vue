@@ -1,17 +1,17 @@
 <template>
-  <layout name="LayoutDefault">
+  <LayoutDefault>
   <div class="home">
     <p> Invoices </p>
   </div>
-  </layout>
+  </LayoutDefault>
 </template>
 
 <script>
-import Layout from '../layouts/Layout'
+import LayoutDefault from '../layouts/LayoutDefault';
 export default {
   name: `Invoices`,
   components: {
-    Layout
+    LayoutDefault
   }
-}
+};
 </script>
